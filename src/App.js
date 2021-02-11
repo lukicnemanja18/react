@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Spisak from './components/Spisak';
+import Forma from './components/Forma';
 
 function App() {
+  const [studenti, setStudenti] = useState([]);
+  const kreiraj = (student) => {
+    setStudenti(prev => [...prev, student])
+  }
+  const obrisi = (student) => {
+    setStudenti(prev => prev.filter(element => element !== student));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+      <Switch>
+
+        <Route path='/spisak'>
+          <Spisak studenti={studenti} />
+        </Route>
+        <Route path='/'>
+          <Forma kreiraj={kreiraj} />
+        </Route>
+      </Switch>
+
+    </BrowserRouter>
   );
 }
 
