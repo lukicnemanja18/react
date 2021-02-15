@@ -5,7 +5,7 @@ export default function Forma(props) {
     const [ime, setIme] = useState('');
     const [prezime, setPrezime] = useState('');
     const [indexGodina, setIndexGodina] = useState(2020);
-    const [indexBroj, setIndexBroj] = useState(1);
+    const [indexBroj, setIndexBroj] = useState('0001');
     const [jmbg, setJmbg] = useState('');
     const isValid = () => {
         return ime.length > 0 && prezime.length > 0 && jmbg.length === 13
@@ -63,7 +63,7 @@ export default function Forma(props) {
                                 ime.length > 0 && prezime.length > 0 && (
                                     <>
                                         <label >Email</label>
-                                        <input type="text" className='form-control' readOnly value={`${ime[0] + prezime[0] + indexGodina + indexBroj}@student.fon.bg.ac.rs`} />
+                                        <input type="text" className='form-control' readOnly value={`${ime[0].toLocaleLowerCase() + prezime[0].toLocaleLowerCase() + indexGodina + indexBroj}@student.fon.bg.ac.rs`} />
                                     </>
                                 )
                             }
@@ -82,7 +82,7 @@ export default function Forma(props) {
                                     prezime: prezime,
                                     indeks: indexBroj + '/' + indexGodina,
                                     jmbg: jmbg,
-                                    email: `${ime[0] + prezime[0] + indexGodina + indexBroj}@student.fon.bg.ac.rs`,
+                                    email: `${ime[0].toLocaleLowerCase() + prezime[0].toLocaleLowerCase() + indexGodina + indexBroj}@student.fon.bg.ac.rs`,
                                     sifra: `${ime[0] + prezime[0] + jmbg}.!!`
                                 })
                             }}>Kreiraj</button>

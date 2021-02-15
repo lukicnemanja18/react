@@ -1,19 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
 import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Spisak from './components/Spisak';
+import './App.css';
 import Forma from './components/Forma';
+import Spisak from './components/Spisak';
 
 function App() {
   const [studenti, setStudenti] = useState([]);
   const kreiraj = (student) => {
     setStudenti(prev => [...prev, student])
   }
-  const obrisi = (student) => {
-    setStudenti(prev => prev.filter(element => element !== student));
-  }
+
   return (
     <BrowserRouter>
 
